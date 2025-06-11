@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahoro Nshuti Meigi - Full Stack Developer & Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Mona Sans", sans-serif;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-dark: #0D0A0B;
+      --secondary-gray: #454955;
+      --light-gray: #F3EFF5;
+      --accent-green: #72B01D;
+      --dark-green: #6F7D20;
+      --white: #ffffff;
+      --text-primary: #0D0A0B;
+      --text-secondary: #454955;
+      --bg-primary: #F3EFF5;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --primary-dark: #F3EFF5;
+      --secondary-gray: #B8B8B8;
+      --light-gray: #1a1a1a;
+      --text-primary: #F3EFF5;
+      --text-secondary: #B8B8B8;
+      --bg-primary: #0D0A0B;
+      --bg-secondary: #1a1a1a;
+      --bg-card: #2a2a2a;
+    }
+
+    body {
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Dark Mode Toggle */
+    .theme-toggle {
+      background: none;
+      border: 2px solid var(--accent-green);
+      color: var(--accent-green);
+      padding: 8px 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent-green);
+      color: white;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-gray) 100%);
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-green);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-gray) 100%);
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+
+    /* Profile Picture Styling */
+    .profile {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .profile img {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--accent-green);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Add a subtle glow effect */
+    .profile::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(114, 176, 29, 0.2) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, white, var(--accent-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--light-gray);
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent-green);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid var(--accent-green);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-green);
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-green);
+      border-radius: 2px;
+    }
+
+    /* Services Section */
+    .services {
+      background: var(--bg-secondary);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      border: 1px solid var(--bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--accent-green), var(--dark-green));
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--accent-green);
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .service-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .service-features li {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      color: var(--accent-green);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .service-price {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .price-amount {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent-green);
+    }
+
+    .price-period {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .service-cta {
+      text-align: center;
+    }
+
+    .service-btn {
+      background: var(--accent-green);
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .service-btn:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+    }
+
+    /* Skills Section */
+    .skills {
+      background: var(--bg-primary);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-category i {
+      font-size: 3rem;
+      color: var(--accent-green);
+      margin-bottom: 1rem;
+    }
+
+    .skill-category h3 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .skill-tag {
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Projects Section */
+    .projects {
+      background: var(--bg-secondary);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      border: 1px solid var(--bg-primary);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, var(--accent-green), var(--dark-green));
+      color: white;
+      padding: 1.5rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tech-tag {
+      background: var(--accent-green);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .project-link {
+      color: var(--accent-green);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-link:hover {
+      color: var(--dark-green);
+    }
+
+    /* Education Section */
+    .education {
+      background: var(--bg-primary);
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .education-item {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 15px;
+      border-left: 5px solid var(--accent-green);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .education-item h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .education-item .institution {
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-item .year {
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--primary-dark);
+      color: white;
+      text-align: center;
+    }
+
+    .contact .section-title {
+      color: white;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-text {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary-gray);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-green);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .theme-toggle {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .profile img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .profile::before {
+        width: 170px;
+        height: 170px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animation for elements coming into view */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="container">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span id="theme-text">Dark</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="profile">
+        <img src="c:\Users\ELOHOME LTD\Downloads\my-profile.jpeg" alt="Mahoro Nshuti Meigi - Full Stack Developer">
+      </div>
+      <h1>Hi, I am Mahoro Nshuti Meigi</h1>
+      <p class="subtitle">Full Stack Developer & Software Engineer</p>
+      <p class="description">
+        Passionate freelance developer specializing in innovative software solutions.
+        From backend systems to stunning frontends, I bring your digital vision to life
+        with clean code and cutting-edge technology.
+      </p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Hire Me Now</a>
+        <a href="#projects" class="btn btn-secondary">View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">My Services</h2>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <i class="fas fa-paint-brush service-icon"></i>
+          <h3>Frontend Development</h3>
+          <p class="service-description">
+            Create stunning, responsive user interfaces with modern web technologies.
+            Includes free UI/UX design consultation to ensure your project looks professional and user-friendly.
+          </p>
+          <ul class="service-features">
+            <li>Responsive Web Design</li>
+            <li>Modern JavaScript Frameworks</li>
+            <li>Free UI/UX Design Service</li>
+            <li>Cross-browser Compatibility</li>
+            <li>Performance Optimization</li>
+          </ul>
+          <div class="service-price">
+            <div class="price-amount">80,000 RWF</div>
+            <div class="price-period">per month</div>
+          </div>
+          <div class="service-cta">
+            <a href="#contact" class="service-btn">Get Started</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-server service-icon"></i>
+          <h3>Backend Development</h3>
+          <p class="service-description">
+            Build robust, scalable server-side applications with secure APIs and efficient database management.
+            Perfect for powering your web and mobile applications.
+          </p>
+          <ul class="service-features">
+            <li>RESTful API Development</li>
+            <li>Database Design & Management</li>
+            <li>Authentication & Security</li>
+            <li>Server Configuration</li>
+            <li>Performance Optimization</li>
+          </ul>
+          <div class="service-price">
+            <div class="price-amount">80,000 RWF</div>
+            <div class="price-period">per month</div>
+          </div>
+          <div class="service-cta">
+            <a href="#contact" class="service-btn">Get Started</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-code service-icon"></i>
+          <h3>Full Stack Development</h3>
+          <p class="service-description">
+            Complete web application development using MERN, PERN, or Spring Boot stacks.
+            From concept to deployment, I handle both frontend and backend development.
+          </p>
+          <ul class="service-features">
+            <li>MERN Stack (MongoDB, Express, React, Node.js)</li>
+            <li>PERN Stack (PostgreSQL, Express, React, Node.js)</li>
+            <li>Spring Boot Full Stack</li>
+            <li>Complete Project Management</li>
+            <li>Deployment & Maintenance</li>
+          </ul>
+          <div class="service-price">
+            <div class="price-amount">120,000 RWF</div>
+            <div class="price-period">per month</div>
+          </div>
+          <div class="service-cta">
+            <a href="#contact" class="service-btn">Get Started</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-mobile-alt service-icon"></i>
+          <h3>Mobile App Development</h3>
+          <p class="service-description">
+            Cross-platform mobile applications using React Native. Build once, deploy on both iOS and Android
+            with native performance and user experience.
+          </p>
+          <ul class="service-features">
+            <li>React Native Development</li>
+            <li>iOS & Android Compatible</li>
+            <li>Native Performance</li>
+            <li>App Store Deployment</li>
+            <li>Push Notifications</li>
+          </ul>
+          <div class="service-price">
+            <div class="price-amount">150,000 RWF</div>
+            <div class="price-period">per month</div>
+          </div>
+          <div class="service-cta">
+            <a href="#contact" class="service-btn">Get Started</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <i class="fas fa-desktop service-icon"></i>
+          <h3>Desktop Applications</h3>
+          <p class="service-description">
+            Professional desktop applications using Java. Perfect for business applications,
+            data management systems, and enterprise solutions.
+          </p>
+          <ul class="service-features">
+            <li>Java Desktop Applications</li>
+            <li>Cross-platform Compatibility</li>
+            <li>Database Integration</li>
+            <li>User-friendly Interfaces</li>
+            <li>Enterprise Solutions</li>
+          </ul>
+          <div class="service-price">
+            <div class="price-amount">130,000 RWF</div>
+            <div class="price-period">per month</div>
+          </div>
+          <div class="service-cta">
+            <a href="#contact" class="service-btn">Get Started</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <i class="fas fa-server"></i>
+          <h3>Backend Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Nodejs</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <i class="fas fa-code"></i>
+          <h3>Frontend Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <i class="fas fa-tablet"></i>
+          <h3>Mobile Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">React Native</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <i class="fas fa-database"></i>
+          <h3>Database Management</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PL/SQL</span>
+            <span class="skill-tag">Oracle SQL</span>
+            <span class="skill-tag">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <i class="fas fa-tools"></i>
+          <h3>Development Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Version Control</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid" id="projects-container">
+        <!-- Projects will be dynamically generated here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="education">
+    <div class="container">
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="education-grid">
+        <div class="education-item">
+          <h3>BSc in Information Technology</h3>
+          <div class="institution">Adventist University of Central Africa</div>
+          <div class="year">Expected 2026</div>
+          <p>Major: Software Engineering</p>
+        </div>
+
+        <div class="education-item">
+          <h3>Full Stack Development Certification</h3>
+          <div class="institution">Coursera</div>
+          <div class="year">Expected May 2025</div>
+          <p>Specialization: Full Stack Development with JavaScript</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Ready to Start Your Project?</h2>
+      <div class="contact-content">
+        <p class="contact-text">
+          Let's bring your ideas to life! I'm available for freelance projects and ready to deliver
+          exceptional results that exceed your expectations. Get in touch today for a free consultation.
+        </p>
+        <div class="cta-buttons">
+          <a href="mailto:nshumeigi@gmail.com" class="btn btn-primary">
+            <i class="fas fa-envelope"></i> Email Me
+          </a>
+          <a href="tel:+250780429546" class="btn btn-secondary">
+            <i class="fas fa-phone"></i> Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/Meigi09" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:nshumeigi@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+250780429546"><i class="fas fa-phone"></i></a>
+      </div>
+      <p>&copy; 2025 Mahoro Nshuti Meigi. All rights reserved. | Freelance Software Developer</p>
+    </div>
+  </footer>
+
+  <script>
+    // Projects Data - ADD NEW PROJECTS HERE!
+    const projects = [
+      {
+        title: "Urban Farming Management System",
+        category: "Backend Development",
+        description: "Comprehensive backend system for farmers to track crops, staff, volunteers, and sustainability metrics. Future integration with ML models for crop analysis.",
+        technologies: ["Java", "Spring Boot", "REST API"],
+        links: [
+          { type: "github", url: "https://github.com/Meigi09/Urban-Farming-Mgt-System", text: "View Code" }
+        ]
+      },
+      {
+        title: "Digital Library Landing Page",
+        category: "Frontend Development",
+        description: "Responsive landing page for a digital library. Future expansion planned for a comprehensive online library platform for university students.",
+        technologies: ["HTML5", "CSS3", "Responsive Design"],
+        links: [
+          { type: "demo", url: "https://meigi09.github.io/simple-digital-library-UI/Landing-Page/", text: "Live Demo" }
+        ]
+      },
+      {
+        title: "Train Ticket Booking System",
+        category: "Full Stack Development",
+        description: "Complete booking platform enabling users to book train tickets, view available trains and seats, and manage their reservations efficiently.",
+        technologies: ["JavaScript", "REST APIs", "Database Integration"],
+        links: [
+          { type: "github", url: "https://github.com/Meigi09/booking-train-ticket", text: "View Code" }
+        ]
+      },
+      {
+        title: "Employee Management System",
+        category: "Database Development",
+        description: "Robust employee management system built with PL/SQL for efficient handling of employee data, payroll, and organizational structure.",
+        technologies: ["PL/SQL", "Oracle SQL", "Database Design"],
+        links: [
+          { type: "github", url: "https://github.com/Meigi09/oracle_sql_employee_management_system", text: "View Code" }
+        ]
+      }
+      // TO ADD A NEW PROJECT, COPY THE STRUCTURE ABOVE AND ADD YOUR PROJECT DETAILS HERE!
+      // Example:
+      // {
+      //     title: "Your New Project Title",
+      //     category: "Project Type (e.g., Full Stack, Frontend, etc.)",
+      //     description: "Brief description of your project and its features.",
+      //     technologies: ["Tech1", "Tech2", "Tech3"],
+      //     links: [
+      //         { type: "github", url: "your-github-url", text: "View Code" },
+      //         { type: "demo", url: "your-demo-url", text: "Live Demo" }
+      //     ]
+      // }
+    ];
+
+    // Function to generate project cards
+    function generateProjects() {
+      const container = document.getElementById('projects-container');
+      container.innerHTML = '';
+
+      projects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+
+        const linksHTML = project.links.map(link => {
+          const icon = link.type === 'github' ? 'fab fa-github' : 'fas fa-external-link-alt';
+          return `<a href="${link.url}" class="project-link" target="_blank">
+                        <i class="${icon}"></i> ${link.text}
+                    </a>`;
+        }).join('');
+
+        const techTagsHTML = project.technologies.map(tech =>
+          `<span class="tech-tag">${tech}</span>`
+        ).join('');
+
+        projectCard.innerHTML = `
+                    <div class="project-header">
+                        <h3>${project.title}</h3>
+                        <p>${project.category}</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-tech">
+                            ${techTagsHTML}
+                        </div>
+                        <div class="project-links">
+                            ${linksHTML}
+                        </div>
+                    </div>
+                `;
+
+        container.appendChild(projectCard);
+      });
+    }
+
+    // Dark Mode Functionality
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+      const themeText = document.getElementById('theme-text');
+
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        themeIcon.className = 'fas fa-moon';
+        themeText.textContent = 'Dark';
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+        themeText.textContent = 'Light';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Load saved theme
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const themeIcon = document.getElementById('theme-icon');
+      const themeText = document.getElementById('theme-text');
+
+      if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+        themeText.textContent = 'Light';
+      }
+    }
+
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function () {
+      generateProjects();
+      loadTheme();
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections for animation
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('fade-in');
+      observer.observe(section);
+    });
+  </script>
+</body>
+
+</html>
