@@ -90,8 +90,14 @@
 
     nav {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
     }
 
     .nav-links {
@@ -108,6 +114,21 @@
     }
 
     .nav-links a:hover {
+      color: var(--accent-green);
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-menu-btn:hover {
       color: var(--accent-green);
     }
 
@@ -565,10 +586,49 @@
       color: var(--accent-green);
     }
 
-    /* Responsive Design */
+    /* Mobile Responsive Design */
     @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
       .nav-links {
-        gap: 1rem;
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-gray) 100%);
+        flex-direction: column;
+        gap: 0;
+        padding: 2rem 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
       }
 
       .theme-toggle {
@@ -606,6 +666,14 @@
       .projects-grid {
         grid-template-columns: 1fr;
       }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
     }
 
     /* Smooth scrolling */
@@ -624,6 +692,22 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Mobile menu overlay */
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .mobile-menu-overlay.active {
+      display: block;
+    }
   </style>
 </head>
 
@@ -631,13 +715,19 @@
   <!-- Header -->
   <header>
     <nav class="container">
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <div class="logo">Mahoro</div>
+
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+        <i class="fas fa-bars" id="mobile-menu-icon"></i>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+        <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+        <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+        <li><a href="#education" onclick="closeMobileMenu()">Education</a></li>
+        <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
         <li>
           <button class="theme-toggle" onclick="toggleTheme()">
             <i class="fas fa-moon" id="theme-icon"></i>
@@ -647,6 +737,9 @@
       </ul>
     </nav>
   </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -956,19 +1049,34 @@
           { type: "github", url: "https://github.com/Meigi09/oracle_sql_employee_management_system", text: "View Code" }
         ]
       }
-      // TO ADD A NEW PROJECT, COPY THE STRUCTURE ABOVE AND ADD YOUR PROJECT DETAILS HERE!
-      // Example:
-      // {
-      //     title: "Your New Project Title",
-      //     category: "Project Type (e.g., Full Stack, Frontend, etc.)",
-      //     description: "Brief description of your project and its features.",
-      //     technologies: ["Tech1", "Tech2", "Tech3"],
-      //     links: [
-      //         { type: "github", url: "your-github-url", text: "View Code" },
-      //         { type: "demo", url: "your-demo-url", text: "Live Demo" }
-      //     ]
-      // }
     ];
+
+    // Mobile Menu Functions
+    function toggleMobileMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const icon = document.getElementById('mobile-menu-icon');
+
+      navLinks.classList.toggle('active');
+      overlay.classList.toggle('active');
+
+      // Toggle hamburger/close icon
+      if (navLinks.classList.contains('active')) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
+      }
+    }
+
+    function closeMobileMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const icon = document.getElementById('mobile-menu-icon');
+
+      navLinks.classList.remove('active');
+      overlay.classList.remove('active');
+      icon.className = 'fas fa-bars';
+    }
 
     // Function to generate project cards
     function generateProjects() {
@@ -1041,6 +1149,23 @@
         themeText.textContent = 'Light';
       }
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function (event) {
+      const navLinks = document.getElementById('nav-links');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+      if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) {
+        closeMobileMenu();
+      }
+    });
 
     // Initialize everything when page loads
     document.addEventListener('DOMContentLoaded', function () {
