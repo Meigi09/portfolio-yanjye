@@ -3,40 +3,60 @@
     const projects = [
       {
         title: "Urban Farming Management System",
-        category: "Backend Development",
-        description: "Comprehensive backend system for farmers to track crops, staff, volunteers, and sustainability metrics. Future integration with ML models for crop analysis.",
-        technologies: ["Java", "Spring Boot", "REST API"],
+        category: "Full Stack Development",
+        description:
+          "Comprehensive system for farmers to track crops, staff, volunteers, and sustainability metrics. Future integration with ML models for crop analysis.",
+        technologies: ["Java", "Spring Boot","React", "REST API","MERN"],
         links: [
-          { type: "github", url: "https://github.com/Meigi09/Urban-Farming-Mgt-System", text: "View Code" }
-        ]
+          {
+            type: "demo",
+            url: "https://rwanda-urban-management-system.vercel.app/",
+            text: "Live Demo",
+          },
+        ],
       },
       {
         title: "Digital Library Landing Page",
         category: "Frontend Development",
-        description: "Responsive landing page for a digital library. Future expansion planned for a comprehensive online library platform for university students.",
+        description:
+          "Responsive landing page for a digital library. Future expansion planned for a comprehensive online library platform for university students.",
         technologies: ["HTML5", "CSS3", "Responsive Design"],
         links: [
-          { type: "demo", url: "https://meigi09.github.io/simple-digital-library-UI/Landing-Page/", text: "Live Demo" }
-        ]
+          {
+            type: "demo",
+            url: "https://meigi09.github.io/simple-digital-library-UI/",
+            text: "Live Demo",
+          },
+        ],
       },
       {
         title: "Train Ticket Booking System",
         category: "Full Stack Development",
-        description: "Complete booking platform enabling users to book train tickets, view available trains and seats, and manage their reservations efficiently.",
+        description:
+          "Complete booking platform enabling users to book train tickets, view available trains and seats, and manage their reservations efficiently.",
         technologies: ["JavaScript", "REST APIs", "Database Integration"],
         links: [
-          { type: "github", url: "https://github.com/Meigi09/booking-train-ticket", text: "View Code" }
-        ]
+          {
+            type: "github",
+            url: "https://github.com/Meigi09/booking-train-ticket",
+            text: "View Code",
+          },
+        ],
       },
       {
         title: "Employee Management System",
         category: "Database Development",
-        description: "Robust employee management system built with PL/SQL for efficient handling of employee data, payroll, and organizational structure.",
+        description:
+          "Robust employee management system built with PL/SQL for efficient handling of employee data, payroll, and organizational structure.",
         technologies: ["PL/SQL", "Oracle SQL", "Database Design"],
         links: [
-          { type: "github", url: "https://github.com/Meigi09/oracle_sql_employee_management_system", text: "View Code" }
-        ]
-      }
+          {
+            type: "github",
+            url: "https://github.com/Meigi09/oracle_sql_employee_management_system",
+            text: "View Code",
+          },
+        ],
+      },
     ];
 
     // Mobile Menu Functions

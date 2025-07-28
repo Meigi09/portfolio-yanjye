@@ -731,6 +731,108 @@ body.menu-open {
   overflow: hidden;
 }
 
+
+/* Experience Section CSS - Add this to your style.css file */
+.experience {
+  background: var(--bg-secondary);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.experience-item {
+  background: var(--bg-card);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid var(--bg-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.experience-item:hover {
+  transform: translateY(-5px);
+}
+
+.company-logo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--accent-green);
+}
+
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.company-logo img:hover {
+  transform: scale(1.1);
+}
+
+.company-info {
+  flex: 1;
+}
+
+.company-info h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.position {
+  color: var(--accent-green);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.duration {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.experience-item .description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Mobile responsive for experience */
+@media (max-width: 768px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .company-logo {
+    align-self: center;
+  }
+}
+
+/* Dark mode shadow adjustments for experience */
+[data-theme="dark"] .experience-item {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 /* Dark mode specific adjustments for skill tags */
 [data-theme="dark"] .skill-tag {
   background: var(--bg-secondary);
