@@ -28,35 +28,8 @@
             text: "Live Demo",
           },
         ],
-      },
-      {
-        title: "Train Ticket Booking System",
-        category: "Full Stack Development",
-        description:
-          "Complete booking platform enabling users to book train tickets, view available trains and seats, and manage their reservations efficiently.",
-        technologies: ["JavaScript", "REST APIs", "Database Integration"],
-        links: [
-          {
-            type: "github",
-            url: "https://github.com/Meigi09/booking-train-ticket",
-            text: "View Code",
-          },
-        ],
-      },
-      {
-        title: "Employee Management System",
-        category: "Database Development",
-        description:
-          "Robust employee management system built with PL/SQL for efficient handling of employee data, payroll, and organizational structure.",
-        technologies: ["PL/SQL", "Oracle SQL", "Database Design"],
-        links: [
-          {
-            type: "github",
-            url: "https://github.com/Meigi09/oracle_sql_employee_management_system",
-            text: "View Code",
-          },
-        ],
-      },
+      },      
+    
     ];
 
     // Mobile Menu Functions
