@@ -15,6 +15,20 @@
           },
         ],
       },
+       {
+        title: "Gorilla Travels",
+        category: "Full Stack Development",
+        description:
+          "Comprehensive system for professional car rental with drivers – Airport pickup, nationwide travel, city-to-city transport, and guided tourism to top destinations and more. Travel in comfort with our reliable, modern vehicles and experienced drivers.",
+        technologies: ["NextJS","MongoDB"],
+        links: [
+          {
+            type: "demo",
+            url: "https://gorilla-travels.vercel.app/",
+            text: "Live Demo",
+          },
+        ],
+      },
       {
         title: "Digital Library Landing Page",
         category: "Frontend Development",
